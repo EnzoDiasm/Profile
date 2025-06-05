@@ -19,7 +19,7 @@
 - 🌱 Atualmente estou aprendendo **programação e desenvolvimento de sistemas**.
 - 💬 Me pergunte sobre **tecnologia, programação e projetos escolares**.
 - 📫 Como me contatar: **enzodiasmereu@gmail.com**.
-- ⚡ Curiosidade: **Adoro explorar novas tecnologias e criar soluções inovadoras!**
+- ⚡ Curiosidade: **Estou no Segundo ano do Ensino Medio!**
 
 ---
 
