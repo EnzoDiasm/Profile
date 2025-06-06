@@ -1,58 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.6;
+  animation: fadeIn 1s ease-in;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Animação suave ao carregar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .container {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  h1 {
-    text-align: center;
-    font-size: 40px;
-    color: #2c3e50;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #3b82f6;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #94a3b8;
+}
+
+section {
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease-in;
+}
+
+h2 {
+  color: #60a5fa;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.icons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icons img {
+  width: 60px;
+  transition: transform 0.3s;
+}
+
+.icons img:hover {
+  transform: scale(1.1);
+}
+
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
   }
-  
-  h1 span {
-    color: #3498db;
+
+  header p, section p {
+    font-size: 1rem;
   }
-  
-  h3 {
-    text-align: center;
-    font-weight: normal;
-    color: #7f8c8d;
-  }
-  
-  .links {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  hr {
-    border: 1px solid #ecf0f1;
-    margin: 30px 0;
-  }
-  
-  ul {
-    list-style-type: square;
-    color: #34495e;
-    line-height: 1.8;
-  }
-  
-  .tecnologias {
-    margin-top: 20px;
-  }
-  
-  .tecnologias img {
+
+  .icons img {
     width: 50px;
-    height: 50px;
-    margin-right: 10px;
   }
+
+  .container {
+    padding: 1rem;
+  }
+}
+.goals ul {
+  list-style-type: "✅ ";
+  padding-left: 1.2rem;
+  color: #cbd5e1;
+}
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.github-link img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
 
