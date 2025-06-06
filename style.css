@@ -1,168 +1,319 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    background: linear-gradient(to bottom, #0f172a, #1e293b);
-    color: #e2e8f0;
-    line-height: 1.6;
-    animation: fadeIn 1s ease-in;
-  }
-  
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: rgba(15, 23, 42, 0.6);
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-    backdrop-filter: blur(6px);
-  }
-  
-  /* Fade in */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enzo Dias Mereu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
     }
-    to {
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+    }
+
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: rgba(15, 23, 42, 0.7);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+      backdrop-filter: blur(6px);
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section, header, footer {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    section.show, header.show, footer.show {
       opacity: 1;
       transform: translateY(0);
     }
-  }
-  
-  /* Scroll effect */
-  section, header, footer {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  
-  section.show, header.show, footer.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  header h1 {
-    font-size: 2.8rem;
-    color: #3b82f6;
-    text-shadow: 1px 1px 4px rgba(59, 130, 246, 0.3);
-  }
-  
-  header p {
-    font-size: 1.2rem;
-    color: #94a3b8;
-  }
-  
-  h2 {
-    color: #60a5fa;
-    border-bottom: 2px solid #334155;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-  
-  h2::after {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 3px;
-    background: #3b82f6;
-    bottom: -5px;
-    left: 0;
-    border-radius: 2px;
-  }
-  
-  section {
-    margin-bottom: 2rem;
-  }
-  
-  .icons {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .icons img {
-    width: 60px;
-    transition: transform 0.3s, filter 0.3s;
-    filter: drop-shadow(0 0 5px #3b82f6aa);
-  }
-  
-  .icons img:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 10px #60a5fa);
-  }
-  
-  a {
-    color: #38bdf8;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-    color: #7dd3fc;
-  }
-  
-  footer {
-    text-align: center;
-    margin-top: 3rem;
-    font-size: 0.9rem;
-    color: #64748b;
-  }
-  
-  .goals ul {
-    list-style-type: "✅ ";
-    padding-left: 1.2rem;
-    color: #cbd5e1;
-  }
-  
-  .github-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .github-link img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-    object-fit: contain;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 600px) {
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
     header h1 {
-      font-size: 2rem;
+      font-size: 2.8rem;
+      color: #3b82f6;
+      text-shadow: 1px 1px 4px rgba(59, 130, 246, 0.3);
     }
-  
-    header p, section p {
-      font-size: 1rem;
+
+    header p {
+      font-size: 1.2rem;
+      color: #94a3b8;
     }
-  
+
+    h2 {
+      color: #60a5fa;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: #3b82f6;
+      bottom: -5px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    .icons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .icons img {
-      width: 50px;
+      width: 60px;
+      transition: transform 0.3s, filter 0.3s;
+      filter: drop-shadow(0 0 5px #3b82f6aa);
     }
-  
+
+    .icons img:hover {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 10px #60a5fa);
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #7dd3fc;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .goals ul {
+      list-style-type: "✅ ";
+      padding-left: 1.2rem;
+      color: #cbd5e1;
+    }
+
+    .github-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
     .github-link img {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
     }
-  
-    .container {
-      padding: 1rem;
+
+    .projects-placeholder {
+      background-color: #1e293b;
+      border: 1px dashed #3b82f6;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      color: #cbd5e1;
     }
-  }
-  
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p, section p {
+        font-size: 1rem;
+      }
+
+      .icons img {
+        width: 50px;
+      }
+
+      .github-link img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <div class="container">
+    <header>
+      <h1>Enzo Dias Mereu</h1>
+      <p>Estudante de 16 anos do Ensino Médio Técnico em Informática</p>
+    </header>
+
+    <section class="about">
+      <h2>Sobre Mim</h2>
+      <p>Tenho 16 anos e gosto muito de tecnologia. Atualmente estou aprendendo programação e desenvolvimento de sistemas.</p>
+      <p>Gosto de resolver problemas, criar soluções digitais e estou sempre buscando melhorar minhas habilidades técnicas.</p>
+    </section>
+
+    <section class="education">
+      <h2>Formação</h2>
+      <p>🧑‍🎓 Ensino Médio Técnico em Informática – Cursando</p>
+      <p>📍 Localização: Belo Horizonte - MG, Brasil</p>
+    </section>
+
+    <section class="goals">
+      <h2>Objetivos</h2>
+      <ul>
+        <li>Aprofundar meus conhecimentos em linguagens como Python, Java e C++.</li>
+        <li>Desenvolver projetos práticos e contribuir em repositórios no GitHub.</li>
+        <li>Trabalhar na área de desenvolvimento de software futuramente.</li>
+        <li>Aprender boas práticas de programação e arquitetura de sistemas.</li>
+      </ul>
+    </section>
+
+    <section class="skills">
+      <h2>Estou aprendendo:</h2>
+      <div class="icons">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" title="HTML5"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" title="CSS3"/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" title="C++"/>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2>Projetos Futuros</h2>
+      <div class="projects-placeholder">
+        <p>🚧 Em breve você verá aqui meus projetos mais legais com Python, Java e Web! 🚀</p>
+        <p>Serão adicionados com imagens, links e detalhes de cada um.</p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contato</h2>
+      <p>Email: <a href="mailto:enzodiasmereu@gmail.com">enzodiasmereu@gmail.com</a></p>
+      <p class="github-link">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+        <a href="https://github.com/EnzoDiasm" target="_blank">github.com/EnzoDiasm</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Enzo Dias Mereu</p>
+    </footer>
+  </div>
+
+  <!-- tsParticles para efeito de constelação -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      background: {
+        color: { value: "#0f172a" }
+      },
+      particles: {
+        number: { value: 90 },
+        color: { value: "#3b82f6" },
+        links: {
+          enable: true,
+          color: "#60a5fa",
+          distance: 120,
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 0.5
+        },
+        opacity: {
+          value: 0.3
+        },
+        size: {
+          value: { min: 1, max: 3 }
+        }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" }
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: {
+              opacity: 0.5
+            }
+          }
+        }
+      },
+      fullScreen: { enable: false }
+    });
+
+    // Mostrar seções ao rolar
+    const sections = document.querySelectorAll('section, header, footer');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
