@@ -66,6 +66,8 @@ h2 {
 
 .icons img {
   width: 60px;
+  height: auto;
+  max-width: 100%;
   transition: transform 0.3s;
 }
 
@@ -123,5 +125,21 @@ footer {
   width: 24px;
   height: 24px;
   filter: brightness(0) invert(1);
+}
+.github-link img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  .icons img {
+    width: 50px;
+  }
+
+  .github-link img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
